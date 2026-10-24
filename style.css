@@ -1,0 +1,158 @@
+:root {
+    --primary: #9e1f24; /* Фирменный цвет Золотого Колоса */
+    --primary-hover: #7a1519;
+    --gold: #d4af37;
+    --dark: #1a1a1a;
+    --text: #2c2c2c;
+    --bg: #fbf9f6;
+    --glass: rgba(255, 255, 255, 0.7);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Montserrat', sans-serif; }
+.premium-body { background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; position: relative; }
+
+/* Фоновые ауры с фирменным красным и золотом */
+.bg-glow { position: fixed; border-radius: 50%; filter: blur(100px); z-index: -1; opacity: 0.3; pointer-events: none; }
+.bg-glow-1 { width: 600px; height: 600px; background: #ffdfdf; top: -150px; left: -100px; }
+.bg-glow-2 { width: 500px; height: 500px; background: #fce8b2; bottom: -100px; right: -100px; }
+
+/* Шапка */
+.prem-header { padding: 25px 40px; text-align: center; }
+.prem-header img { height: 50px; filter: drop-shadow(0 4px 6px rgba(0,0,0,0.05)); }
+
+/* Контейнер */
+.prem-container { max-width: 1000px; margin: 0 auto; padding: 20px 20px 80px; }
+
+/* Главный экран */
+.prem-hero { text-align: center; padding: 60px 20px 60px; transition: all 0.6s ease; }
+.prem-hero.hidden-hero { opacity: 0; transform: translateY(-50px); pointer-events: none; height: 0; padding: 0; overflow: hidden; }
+.prem-kicker { font-size: 13px; letter-spacing: 2px; text-transform: uppercase; font-weight: 700; margin-bottom: 20px; }
+.prem-hero h1 { font-family: 'Playfair Display', serif; font-size: 56px; line-height: 1.1; color: var(--dark); margin-bottom: 20px; font-weight: 700; }
+.prem-hero h1 em { color: var(--primary); font-style: italic; }
+.prem-subtitle { font-size: 16px; color: #777; max-width: 600px; margin: 0 auto 40px; line-height: 1.6; }
+
+/* Кнопки */
+.prem-btn-main { 
+    background: var(--primary); color: #fff; border: none; padding: 20px 50px; border-radius: 50px; 
+    font-size: 15px; letter-spacing: 1px; cursor: pointer; transition: all 0.3s ease; font-weight: 600; 
+    text-transform: uppercase; box-shadow: 0 10px 20px rgba(158, 31, 36, 0.2);
+}
+.prem-btn-main:hover { background: var(--primary-hover); transform: translateY(-3px); box-shadow: 0 15px 30px rgba(158, 31, 36, 0.3); }
+.prem-btn-main:disabled { background: #ccc; box-shadow: none; cursor: not-allowed; transform: none; }
+
+/* Прогресс-бар */
+.prem-progress-wrapper { margin-bottom: 40px; }
+.prem-progress-track { height: 3px; background: #e8e0d5; width: 100%; position: relative; margin-bottom: 15px; border-radius: 2px; }
+.prem-progress-fill { height: 100%; background: var(--primary); width: 0%; transition: width 0.5s ease; border-radius: 2px; }
+.prem-progress-labels { display: flex; justify-content: space-between; }
+.prem-progress-labels span { font-size: 11px; text-transform: uppercase; letter-spacing: 1px; color: #aaa; transition: 0.3s; font-weight: 600; }
+.prem-progress-labels span.active { color: var(--primary); }
+
+/* Шаги */
+.prem-step { 
+    background: var(--glass); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(255,255,255,0.8); border-radius: 32px; padding: 50px; 
+    box-shadow: 0 30px 60px rgba(0,0,0,0.04); display: none; margin-bottom: 30px;
+}
+.prem-step.active { display: block; animation: premFade 0.5s cubic-bezier(0.2, 0.8, 0.2, 1); }
+@keyframes premFade { from { opacity: 0; transform: translateY(20px) scale(0.98); } to { opacity: 1; transform: translateY(0) scale(1); } }
+
+.prem-step-label { display: block; font-size: 12px; letter-spacing: 2px; color: var(--primary); text-transform: uppercase; margin-bottom: 15px; font-weight: 700; }
+.prem-step h2 { font-family: 'Playfair Display', serif; font-size: 32px; margin-bottom: 30px; color: var(--dark); font-weight: 600; }
+
+/* Сетки и Карточки */
+.prem-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 15px; }
+.four-cols { grid-template-columns: repeat(4, 1fr); }
+.prem-card { 
+    border: 1px solid rgba(0,0,0,0.06); border-radius: 16px; padding: 25px 15px; text-align: center; 
+    cursor: pointer; transition: all 0.3s; font-size: 14px; font-weight: 500;
+    background: rgba(255,255,255,0.6);
+}
+.prem-card:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.05); border-color: var(--primary); }
+.prem-card.active { border-color: var(--primary); background: #fff; box-shadow: 0 0 0 2px var(--primary); color: var(--primary); font-weight: 600; }
+.prem-card .ph { height: 60px; background: #f4f0e8; border-radius: 8px; margin-bottom: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 11px; }
+
+/* Калькулятор */
+.prem-calc { margin-top: 20px; font-size: 14px; color: var(--primary); font-weight: 600; padding: 15px; background: rgba(158, 31, 36, 0.08); border-radius: 12px; text-align: center; }
+
+/* Начинки */
+.prem-filling-layout { display: grid; grid-template-columns: 220px 1fr; gap: 30px; }
+.prem-filling-cats { display: flex; flex-direction: column; gap: 8px; }
+.prem-cat-btn { padding: 15px 20px; text-align: left; border: 1px solid transparent; background: transparent; border-radius: 12px; cursor: pointer; font-size: 13px; font-weight: 500; transition: 0.2s; color: #666; }
+.prem-cat-btn:hover { background: rgba(255,255,255,0.8); }
+.prem-cat-btn.active { background: #fff; color: var(--primary); box-shadow: 0 4px 15px rgba(0,0,0,0.05); font-weight: 700; border-color: rgba(158, 31, 36, 0.1); }
+.prem-filling-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; }
+.prem-item { background: rgba(255,255,255,0.8); border: 1px solid rgba(0,0,0,0.04); border-radius: 12px; padding: 10px; text-align: center; cursor: pointer; transition: 0.2s; font-size: 11px; }
+.prem-item:hover { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.prem-item.active { border-color: var(--primary); background: #fff; box-shadow: 0 0 0 2px var(--primary); }
+.prem-item .ph { height: 60px; background: #f4f0e8; margin-bottom: 8px; border-radius: 6px; }
+
+/* Галерея */
+.prem-gallery-tabs { display: flex; gap: 10px; margin-bottom: 25px; flex-wrap: wrap; }
+.prem-tab { padding: 10px 20px; border-radius: 30px; border: 1px solid rgba(0,0,0,0.1); background: transparent; cursor: pointer; font-size: 13px; font-weight: 500; transition: 0.2s; }
+.prem-tab:hover { background: rgba(255,255,255,0.8); }
+.prem-tab.active { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 5px 15px rgba(158,31,36,0.2); }
+.prem-gallery-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; margin-bottom: 30px; }
+.prem-g-item { height: 100px; background: #f4f0e8; border-radius: 12px; display: flex; align-items: center; justify-content: center; color: #bbb; font-size: 11px; cursor: pointer; transition: 0.2s; border: 2px solid transparent; }
+.prem-g-item:hover { transform: scale(1.03); }
+.prem-g-item.active { border-color: var(--primary); box-shadow: 0 0 0 2px var(--primary); }
+
+/* НОВАЯ ЗОНА ЗАГРУЗКИ ФОТО */
+.prem-upload-container { border-top: 1px dashed rgba(0,0,0,0.1); padding-top: 30px; }
+.upload-title { font-size: 14px; font-weight: 600; margin-bottom: 15px; color: var(--text); }
+.upload-dropzone {
+    border: 2px dashed rgba(158, 31, 36, 0.3); background: rgba(255,255,255,0.5); border-radius: 16px;
+    padding: 40px 20px; text-align: center; cursor: pointer; transition: 0.3s; position: relative;
+    display: flex; flex-direction: column; align-items: center; gap: 10px;
+}
+.upload-dropzone:hover { background: rgba(158, 31, 36, 0.05); border-color: var(--primary); }
+.upload-dropzone input[type="file"] { display: none; }
+.upload-icon { color: var(--primary); background: rgba(158,31,36,0.1); width: 50px; height: 50px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin-bottom: 5px; }
+.upload-text { font-size: 14px; font-weight: 600; color: var(--primary); }
+.upload-hint { font-size: 12px; color: #999; }
+.preview-container { position: relative; width: 100%; height: 200px; border-radius: 16px; overflow: hidden; display: flex; justify-content: center; align-items: center; background: #f4f0e8; }
+.preview-container img { max-width: 100%; max-height: 100%; object-fit: contain; }
+.remove-btn { position: absolute; top: 10px; right: 10px; background: var(--primary); color: #fff; border: none; width: 32px; height: 32px; border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; font-size: 14px; transition: 0.2s; }
+.remove-btn:hover { background: var(--primary-hover); transform: scale(1.1); }
+.hidden { display: none !important; }
+
+/* Поля ввода */
+.prem-input { width: 100%; padding: 16px 20px; border: 1px solid rgba(0,0,0,0.1); border-radius: 12px; font-size: 15px; font-family: inherit; background: #fff; transition: 0.3s; outline: none; margin-bottom: 0; }
+.prem-input:focus { border-color: var(--primary); box-shadow: 0 0 0 4px rgba(158,31,36,0.1); }
+.prem-input:disabled { background: #f0f0f0; color: #999; }
+.prem-check { display: flex; align-items: flex-start; gap: 10px; font-size: 13px; color: #555; cursor: pointer; margin-bottom: 20px; line-height: 1.5; }
+.prem-check input { margin-top: 3px; accent-color: var(--primary); width: 18px; height: 18px; flex-shrink: 0; }
+
+/* Итог */
+.prem-summary { background: #fff; border: 2px solid var(--gold); }
+.prem-sum-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid rgba(0,0,0,0.05); font-size: 15px; }
+.prem-sum-row b { font-weight: 600; color: var(--dark); }
+.prem-total { display: flex; justify-content: space-between; align-items: center; margin: 25px 0 10px; padding-top: 20px; border-top: 1px solid rgba(0,0,0,0.08); }
+.prem-total span { font-size: 13px; text-transform: uppercase; letter-spacing: 1px; color: #777; font-weight: 600; }
+.prem-total-price { font-family: 'Playfair Display', serif; font-size: 38px; font-weight: 700; color: var(--primary); }
+.prem-disclaimer { font-size: 11px; color: #999; text-align: right; margin-bottom: 30px; }
+
+/* Форма заказа */
+.prem-form { margin-top: 20px; display: flex; flex-direction: column; gap: 15px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-group label { font-size: 12px; font-weight: 600; color: #555; }
+.required-check span a { color: var(--primary); text-decoration: none; }
+.required-check span a:hover { text-decoration: underline; }
+.form-hint { font-size: 12px; color: #999; text-align: center; margin-top: 10px; }
+
+/* Навигация */
+.prem-nav { display: flex; justify-content: space-between; margin-top: 20px; }
+.prem-nav-btn { padding: 18px 40px; border-radius: 50px; border: 1px solid rgba(0,0,0,0.1); background: rgba(255,255,255,0.8); cursor: pointer; font-size: 14px; font-weight: 600; transition: 0.3s; }
+.prem-nav-btn:hover { background: #fff; box-shadow: 0 5px 15px rgba(0,0,0,0.05); }
+.prem-nav-btn.gold { background: var(--primary); color: #fff; border-color: var(--primary); box-shadow: 0 10px 20px rgba(158,31,36,0.2); }
+.prem-nav-btn.gold:hover { background: var(--primary-hover); transform: translateY(-2px); }
+
+@media (max-width: 768px) {
+    .prem-hero h1 { font-size: 36px; }
+    .prem-step { padding: 30px 20px; }
+    .prem-filling-layout { grid-template-columns: 1fr; }
+    .four-cols { grid-template-columns: repeat(2, 1fr); }
+    .form-row { grid-template-columns: 1fr; }
+    .prem-total { flex-direction: column; align-items: flex-start; }
+}

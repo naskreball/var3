@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Премиальный конструктор - Золотой Колос</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style-premium.css">
+</head>
+<body class="premium-body">
+
+    <div class="bg-glow bg-glow-1"></div>
+    <div class="bg-glow bg-glow-2"></div>
+
+    <!-- Шапка с логотипом -->
+    <header class="prem-header">
+        <img src="https://zolotoykolos.ru/local/templates/zolotoykolos/images/logo.png" alt="Золотой Колос" onerror="this.src='https://via.placeholder.com/200x50/ffffff/9e1f24?text=ЗОЛОТОЙ+КОЛОС'">
+    </header>
+
+    <div class="prem-container">
+        
+        <!-- Главный экран -->
+        <div class="prem-hero" id="hero">
+            <p class="prem-kicker" style="color: var(--primary);">Золотой Колос представляет</p>
+            <h1>Соберите свой <br><em>эксклюзивный</em> торт</h1>
+            <p class="prem-subtitle">Индивидуальный подход. Натуральные ингредиенты. Идеальный праздник.</p>
+            <button class="prem-btn-main" onclick="startPremium()">Начать сборку</button>
+        </div>
+
+        <!-- Прогресс-бар -->
+        <div class="prem-progress-wrapper" id="prem-progress" style="display: none;">
+            <div class="prem-progress-track">
+                <div class="prem-progress-fill" id="prem-fill"></div>
+            </div>
+            <div class="prem-progress-labels">
+                <span id="p-lbl-1" class="active">01. Повод</span>
+                <span id="p-lbl-2">02. Форма</span>
+                <span id="p-lbl-3">03. Вес</span>
+                <span id="p-lbl-4">04. Начинка</span>
+                <span id="p-lbl-5">05. Галерея</span>
+                <span id="p-lbl-6">06. Надпись</span>
+                <span id="p-lbl-7">07. Итог</span>
+            </div>
+        </div>
+
+        <!-- Шаг 1 -->
+        <div class="prem-step" id="p-step1">
+            <span class="prem-step-label">01 / Повод</span>
+            <h2>Выберите повод</h2>
+            <div class="prem-grid" id="p-event-options">
+                <div class="prem-card" onclick="pSelect('event', 'День Рождения', this)">День Рождения</div>
+                <div class="prem-card" onclick="pSelect('event', 'Детский праздник', this)">Детский праздник</div>
+                <div class="prem-card" onclick="pSelect('event', 'Юбилей', this)">Юбилей</div>
+                <div class="prem-card" onclick="pSelect('event', 'Свадьба', this)">Свадьба</div>
+                <div class="prem-card" onclick="pSelect('event', 'Выпускной', this)">Выпускной</div>
+                <div class="prem-card" onclick="pSelect('event', 'Корпоратив', this)">Корпоратив</div>
+            </div>
+        </div>
+
+        <!-- Шаг 2 -->
+        <div class="prem-step" id="p-step2">
+            <span class="prem-step-label">02 / Форма</span>
+            <h2>Выберите форму торта</h2>
+            <div class="prem-grid four-cols" id="p-shape-options">
+                <div class="prem-card" onclick="pSelect('shape', 'Круг', this)"><div class="ph">Круг</div>Круглый</div>
+                <div class="prem-card" onclick="pSelect('shape', 'Квадрат', this)"><div class="ph">Квадрат</div>Квадратный</div>
+                <div class="prem-card" onclick="pSelect('shape', 'Фигурный', this)"><div class="ph">Фигура</div>Фигурный</div>
+                <div class="prem-card" onclick="pSelect('shape', 'Многоярусный', this)"><div class="ph">Ярусы</div>Многоярусный</div>
+            </div>
+        </div>
+
+        <!-- Шаг 3 -->
+        <div class="prem-step" id="p-step3">
+            <span class="prem-step-label">03 / Вес</span>
+            <h2>Выберите вес</h2>
+            <div class="prem-grid" id="p-weight-options">
+                <div class="prem-card" onclick="pSelectWeight(2, this)">2 кг</div>
+                <div class="prem-card" onclick="pSelectWeight(2.5, this)">2.5 кг</div>
+                <div class="prem-card" onclick="pSelectWeight(3, this)">3 кг</div>
+                <div class="prem-card" onclick="pSelectWeight(3.5, this)">3.5 кг</div>
+                <div class="prem-card" onclick="pSelectWeight(4, this)">4 кг</div>
+                <div class="prem-card" onclick="pSelectWeight(4.5, this)">4.5 кг</div>
+                <div class="prem-card" onclick="pSelectWeight(5, this)">5 кг</div>
+            </div>
+            <div class="prem-calc" id="p-calc" style="display:none;">Примерное количество порций: <b id="p-portions">0</b></div>
+        </div>
+
+        <!-- Шаг 4 -->
+        <div class="prem-step" id="p-step4">
+            <span class="prem-step-label">04 / Начинка</span>
+            <h2>Самое вкусное внутри</h2>
+            <div class="prem-filling-layout">
+                <div class="prem-filling-cats" id="p-filling-cats"></div>
+                <div class="prem-filling-grid" id="p-filling-grid"></div>
+            </div>
+        </div>
+
+        <!-- Шаг 5 -->
+        <div class="prem-step" id="p-step5">
+            <span class="prem-step-label">05 / Галерея</span>
+            <h2>Вдохновение</h2>
+            <div class="prem-gallery-tabs" id="p-gallery-tabs">
+                <button class="prem-tab active" onclick="pSwitchTab('Праздничные', this)">Праздничные</button>
+                <button class="prem-tab" onclick="pSwitchTab('Свадебные', this)">Свадебные</button>
+                <button class="prem-tab" onclick="pSwitchTab('Юбилейные', this)">Юбилейные</button>
+                <button class="prem-tab" onclick="pSwitchTab('Детские', this)">Детские</button>
+                <button class="prem-tab" onclick="pSwitchTab('Корпоративные', this)">Корпоративные</button>
+            </div>
+            <div class="prem-gallery-grid" id="p-gallery-grid"></div>
+            
+            <!-- Обновленный блок загрузки фото -->
+            <div class="prem-upload-container">
+                <p class="upload-title">Покажите нам, каким он должен быть, ваш идеальный торт</p>
+                <div class="upload-dropzone" id="dropzone" onclick="document.getElementById('p-file').click()">
+                    <input type="file" id="p-file" accept="image/*" onchange="pUpload(event)">
+                    <div class="upload-icon">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                    </div>
+                    <span class="upload-text">Нажмите или перетащите фото сюда</span>
+                    <span class="upload-hint">JPG, PNG до 10 МБ</span>
+                </div>
+                <div id="p-preview" class="preview-container hidden">
+                    <img id="p-preview-img" src="" alt="Ваше фото">
+                    <button class="remove-btn" onclick="pRemovePhoto(event)">✕</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Шаг 6 -->
+        <div class="prem-step" id="p-step6">
+            <span class="prem-step-label">06 / Надпись</span>
+            <h2>Последний штрих</h2>
+            <input type="text" class="prem-input" id="p-text" placeholder="Введите текст надписи" oninput="pUpdate()">
+            <label class="prem-check"><input type="checkbox" id="p-notext" onchange="pNoText(this.checked)"> Никакой, он и так прекрасен</label>
+        </div>
+
+        <!-- Шаг 7 -->
+        <div class="prem-step prem-summary" id="p-step7">
+            <span class="prem-step-label">07 / Итог</span>
+            <h2>Ваш эксклюзивный торт</h2>
+            
+            <div class="prem-sum-row"><span>Событие:</span> <b id="ps-event">-</b></div>
+            <div class="prem-sum-row"><span>Форма:</span> <b id="ps-shape">-</b></div>
+            <div class="prem-sum-row"><span>Вес:</span> <b id="ps-weight">-</b></div>
+            <div class="prem-sum-row"><span>Порции:</span> <b id="ps-portions">-</b></div>
+            <div class="prem-sum-row"><span>Начинка:</span> <b id="ps-filling">-</b></div>
+            <div class="prem-sum-row"><span>Надпись:</span> <b id="ps-text">-</b></div>
+            
+            <div class="prem-total">
+                <span>Предварительная стоимость</span>
+                <div class="prem-total-price"><span id="ps-price">0</span> ₽</div>
+            </div>
+            <p class="prem-disclaimer">* Точная цена будет рассчитана после согласования внешнего оформления и веса.</p>
+            
+            <!-- Детализированная форма -->
+            <form id="order-form" class="prem-form" onsubmit="return submitOrder(event)">
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Ваше имя *</label>
+                        <input type="text" id="f-name" placeholder="Иван Иванов" class="prem-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Телефон *</label>
+                        <input type="tel" id="f-phone" placeholder="+7 (999) 123-45-67" class="prem-input" required>
+                    </div>
+                </div>
+                <div class="form-row">
+                    <div class="form-group">
+                        <label>Дата события *</label>
+                        <input type="date" id="f-date" class="prem-input" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Способ доставки</label>
+                        <select class="prem-input">
+                            <option>Самовывоз</option>
+                            <option>Доставка</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Комментарии</label>
+                    <textarea placeholder="Пожелания к торту, адрес доставки..." class="prem-input" rows="3"></textarea>
+                </div>
+                
+                <label class="prem-check required-check">
+                    <input type="checkbox" id="f-agree" required>
+                    <span>Я согласен на обработку персональных данных в соответствии с <a href="#" target="_blank">политикой конфиденциальности</a> *</span>
+                </label>
+
+                <button type="submit" class="prem-btn-main" id="submit-btn" disabled>Оформить предварительный заказ</button>
+                <p class="form-hint">* Все поля обязательны для заполнения</p>
+            </form>
+        </div>
+
+        <!-- Кнопки навигации -->
+        <div class="prem-nav" id="prem-nav" style="display: none;">
+            <button class="prem-nav-btn" id="p-prev" onclick="pPrev()">← Назад</button>
+            <button class="prem-nav-btn gold" id="p-next" onclick="pNext()">Далее →</button>
+        </div>
+
+    </div>
+    <script src="script-premium.js"></script>
+</body>
+</html>
